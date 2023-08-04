@@ -51,14 +51,22 @@ app.layout = html.Div([
     html.Br(),
     html.P(children='Education Level?'),
     dcc.Dropdown(
-        ["Higher education","Secondary / secondary special","Incomplete higher","Lower secondary","Academic degree"],
+        [    {'label': 'Academic degree', 'value': 1},
+            {'label': 'Higher education', 'value': 2},
+            {'label': 'Incomplete higher', 'value': 3},
+            {'label': 'Lower secondary', 'value': 4},
+            {'label': 'Secondary / secondary special', 'value': 5}],
         id='dropdown-realestate4',
         placeholder="Education Level?"
     ),
     html.Br(),
     html.P(children='Marital Status?'),
     dcc.Dropdown(
-        ["Single","Married","Separated","Civil Marrige","Widow"],
+        [{'label': 'Civil marriage', 'value': 1},
+            {'label': 'Married', 'value': 2},
+            {'label': 'Separated', 'value': 3},
+            {'label': 'Single', 'value': 4},
+            {'label': 'Widow', 'value': 5}],
         id='dropdown-realestate5',
         placeholder="Marital Status?"
     ),
@@ -113,7 +121,7 @@ def update_result(click,gender,car, house, category, education, marital, family_
     df_predict = pd.DataFrame(info_for_prediction,index=[0])
     df_predict = scaler.transform(df_predict)
     answer = model.predict(df_predict)
-    return answer
+    return f' You make ${np.round(answer,2)} per year'
 
 
 if __name__ == '__main__':
