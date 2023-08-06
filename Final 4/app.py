@@ -2,7 +2,7 @@ from dash import Dash, html, dash_table, dcc
 import pandas as pd
 import plotly.express as px
 
-df = pd.read_csv('Resource/application_record.csv')
+df = pd.read_csv('Resources/application_record.csv')
 
 #  Initialize the app
 app = Dash(__name__)

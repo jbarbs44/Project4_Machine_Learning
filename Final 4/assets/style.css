@@ -1,0 +1,13 @@
+body{
+    font-family: system-ui;
+}
+
+.my_header{color:rgb(255, 145, 0)}
+
+.gender .car .house .category .education .marital .family{
+    height: 20px;
+}
+.gender .car .house .category .education .marital .family {
+    font-size: 20px;
+    padding-left: 5px;
+}
