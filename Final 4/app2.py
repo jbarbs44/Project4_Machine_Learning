@@ -1,10 +1,12 @@
-from dash import Dash, html, dcc, callback, Output, Input, State
+from dash import Dash, html, dcc, callback, Output, Input, State, dash_table
 import pandas as pd
 import plotly.express as px
 import pickle
 import sklearn.preprocessing
 import numpy as np
 import dash_html_components as html
+
+
 
 with open("scaler.pkl","rb") as f:
     scaler = pickle.load(f)
@@ -116,8 +118,8 @@ app.layout = html.Div([
     html.Br(),
     html.H3(children="Results"),
     html.P(children="", id="p-result"),
-    html.Button('Submit', id='btn-nclicks-1', n_clicks=0),
-    html.Button('Reset',id='reset_button', n_clicks=0),
+    html.Button('Submit', id='btn-nclicks-1', n_clicks=0, className='summit'),
+    html.Button('Reset',id='reset_button', n_clicks=0,className='reset'),
 ])
 
 @callback( Output('p-result', 'children'),
@@ -179,7 +181,6 @@ def update_result(click,gender,education, country, ethnicity, occupation, age, y
 )
 def reset(clicks):
     return f'',None,None,None,None,None,None,None
-
 
 
 if __name__ == '__main__':
