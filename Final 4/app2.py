@@ -73,6 +73,30 @@ app.layout = html.Div([
         placeholder="Marital Status?"
     ),
     html.Br(),
+    html.P(children='Occupation Type?', className="marital"),
+    dcc.Dropdown(
+        [{'label': 'Security staff', 'value': 1},
+            {'label': 'Sales staff', 'value': 2},
+            {'label': 'Accountants', 'value': 3},
+            {'label': 'Laborers', 'value': 4},
+            {'label': 'Managers', 'value': 5},
+            {'label': 'Drivers', 'value': 6},
+            {'label': 'Core staff', 'value': 7},
+            {'label': 'High skill tech staff', 'value': 8},
+            {'label': 'Cleaning staff', 'value': 9},
+            {'label': 'Private service staff', 'value': 10},
+            {'label': 'Cooking staff', 'value': 11},
+            {'label': 'Low-skill Laborers', 'value': 12},
+            {'label': 'Medicine staff', 'value': 13},
+            {'label': 'Secretaries', 'value': 14},
+            {'label': 'Waiters/barmen staff', 'value': 15},
+            {'label': 'HR staff', 'value': 16},
+            {'label': 'Realty agents', 'value': 17},
+            {'label': 'IT staff', 'value': 18}],
+        id='dropdown-realestate6',
+        placeholder="Occupation Type?"
+    ),
+    html.Br(),
     html.P(children='Family Size?', className="family"),
     dcc.Input(
         id='input-family',
@@ -95,10 +119,11 @@ app.layout = html.Div([
     State('dropdown-realestate3', 'value'),
     State('dropdown-realestate4', 'value'),
     State('dropdown-realestate5', 'value'),
+    State('dropdown-realestate6', 'value'),
     State('input-family', 'value'),
     prevent_initial_call=True,
     )
-def update_result(click,gender,car, house, category, education, marital, family_size):
+def update_result(click,gender,car, house, category, education, marital, occupation, family_size):
     if car is None:
         return "Please fill out the car section."
     elif house is None:
@@ -109,6 +134,8 @@ def update_result(click,gender,car, house, category, education, marital, family_
         return "Please fill out the education level section."
     elif marital is None:
         return "Please fill out the marital section."
+    elif occupation is None:
+        return "Please fill out the occupation section."
     elif family_size is None:
         return "Please fill out the family size section."
     info_for_prediction = {
@@ -119,6 +146,7 @@ def update_result(click,gender,car, house, category, education, marital, family_
         "INCOME CATEGORY": int(category),
         "EDUCATION LEVEL" : str(education),
         "MARITAL STATUS": str(marital),
+        "OCCUPATION": str(occupation)
     }
     df_predict = pd.DataFrame(info_for_prediction,index=[0])
     df_predict = scaler.transform(df_predict)
@@ -133,13 +161,14 @@ def update_result(click,gender,car, house, category, education, marital, family_
     Output('dropdown-realestate3', 'value'),
     Output('dropdown-realestate4', 'value'),
     Output('dropdown-realestate5', 'value'),
+    Output('dropdown-realestate6', 'value'),
     Output('input-family', 'value'),
     Output('p-result', 'children',allow_duplicate=True),
     Input('reset_button', "n_clicks"),
     prevent_initial_call='initial_duplicate'
 )
 def reset(clicks):
-    return f'',None,None,None,None,None,None,None
+    return f'',None,None,None,None,None,None,None,None
 
 
 
