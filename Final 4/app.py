@@ -2,18 +2,16 @@ from dash import Dash, html, dash_table, dcc
 import pandas as pd
 import plotly.express as px
 
-df = pd.read_csv('Resources/application_record.csv')
+df = pd.read_csv('Resources\Salary_Data_Based_country_and_race.csv')
 
 #  Initialize the app
 app = Dash(__name__)
 
-# App layout
-app.layout = html.Div([
-    html.Div(children='Average Income'),
-    dash_table.DataTable(data=df.to_dict('records'), page_size=50),
-    dcc.Graph(figure=px.histogram(df, x='AMT_INCOME_TOTAL', y='NAME_EDUCATION_TYPE', histfunc='avg'))
-])
 
+app.layout = html.Div([
+    html.Div(children='---'),
+    dcc.Graph(figure=px.histogram(df, x='Education Level', y='Salary', histfunc='avg'))
+])
 
 # Run the app
 if __name__ == '__main__':
