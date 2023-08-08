@@ -27,12 +27,10 @@ app.layout = html.Div([
     html.Br(),
     html.P(children='Education Level?', className="education"),
     dcc.Dropdown(
-        [{'label': "Bachelor's", 'value': 1},
-            {'label': "Master's", 'value': 2},
-            {'label': 'PhD', 'value': 3},
-            {'label': "Bachelor's Degree", 'value': 4},
-            {'label': "Master's Degree", 'value': 5},
-            {'label': 'High School', 'value': 6},],
+        [{'label': "High School", 'value': 1},
+            {'label': "Bachelor's Degree", 'value': 2},
+            {'label': "Master's Degree", 'value': 3},
+            {'label': "PhD", 'value': 4}],
         id='dropdown-salary1',
         placeholder="What is your education level?"
     ),
@@ -54,7 +52,7 @@ app.layout = html.Div([
             {'label': 'Hispanic', 'value': 2},
             {'label': 'Asian', 'value': 3},
             {'label': 'African American', 'value': 4},
-            {'label': 'Mixed', 'value': 5},],
+            {'label': 'Mixed', 'value': 5}],
         id='dropdown-salary3',
         placeholder="What is your ethnicity?"
     ),
@@ -96,7 +94,7 @@ app.layout = html.Div([
             {'label': ' Sales Associate', 'value': 161}, {'label': 'Human Resources Manager', 'value': 162}, {'label': 'Juniour HR Generalist', 'value': 163}, {'label': 'Juniour HR Coordinator', 'value': 164}, {'label': 'Digital Marketing Specialist', 'value': 165}, 
             {'label': 'Receptionist', 'value': 166}, {'label': 'Marketing Director', 'value': 167}, {'label': 'Social Media Man', 'value': 168}, {'label': 'Delivery Driver', 'value': 169}],
         id='dropdown-salary4',
-        placeholder="What is your ethnicity?"
+        placeholder="What is your current Occupation?"
     ),
     html.Br(),
     html.P(children='Age?', className="family"),
